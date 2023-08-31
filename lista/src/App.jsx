@@ -14,7 +14,7 @@ const App = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/users'); // Use a porta correta do seu backend
+      const response = await axios.get('http://localhost:3001/users'); 
       setUsers(response.data);
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
@@ -26,15 +26,15 @@ const App = () => {
 
     if (editingIndex === -1) {
       try {
-        await axios.post('http://localhost:3001/users', { nome, idade }); // Use a porta correta do seu backend
+        await axios.post('http://localhost:3001/users', { nome, idade });
         fetchUsers();
       } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
       }
     } else {
       try {
-        const userId = users[editingIndex].id; // Certifique-se de ter o campo 'id' no objeto retornado pelo backend
-        await axios.put(`http://localhost:3001/users/${userId}`, { nome, idade }); // Use a porta correta do seu backend
+        const userId = users[editingIndex].id; 
+        await axios.put(`http://localhost:3001/users/${userId}`, { nome, idade }); 
         fetchUsers();
         setEditingIndex(-1);
       } catch (error) {
@@ -55,8 +55,8 @@ const App = () => {
 
   const handleDelete = async (index) => {
     try {
-      const userId = users[index].id; // Certifique-se de ter o campo 'id' no objeto retornado pelo backend
-      await axios.delete(`http://localhost:3001/users/${userId}`); // Use a porta correta do seu backend
+      const userId = users[index].id; 
+      await axios.delete(`http://localhost:3001/users/${userId}`);
       fetchUsers();
     } catch (error) {
       console.error('Erro ao excluir usuário:', error);
